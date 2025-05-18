@@ -5,6 +5,7 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  Link
 } from "react-router";
 
 import type { Route } from "./+types/root";
@@ -42,7 +43,23 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+    <main className="grid">
+      <header>
+        <nav className="bg-slate-400 w-full h-15 flex justify-between p-5">
+          <Link to="/"><h1>Elior Report Logo</h1></Link>
+          <div className="flex gap-4">
+            <Link to="/menu-analysis">Menu Analysis</Link>
+            <Link to="/menu-analysis">Menu Analysis2</Link>
+            <Link to="/">Login/Signup</Link>
+          </div>
+        </nav>
+      </header>
+    </main>
+    <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
